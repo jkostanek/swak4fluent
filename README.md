@@ -11,17 +11,13 @@ Clone the swak4fluent repository.
 
 Copy the utility that you wish to use into the working directory.
 
-```
-For example, the autosave utility uses adaptive time stepping 
-and saves the .cas and .dat file at regularly specified intervals.
-```
 
 Open a terminal and start ANSYS FLUENT.
 
 From within the FLUENT GUI, read the startup script journal file.
 
 ```
-autosave_startup_script.jou
+<utility-name>_startup_script.jou
 ```
 
 Start the simulation.
