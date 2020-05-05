@@ -1,0 +1,7 @@
+#!/bin/bash
+# My first script
+
+rm box_t=*
+rm log
+rm -r swak4fluent/
+rm -r tecplot-derived/
