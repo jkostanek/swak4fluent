@@ -12,7 +12,8 @@ Clone the swak4fluent repository.
 Copy the utility that you wish to use into the working directory.
 
 ```
-For example, the autosave utility uses adaptive time stepping and saves the .cas and .dat file at regularly specified intervals.
+For example, the autosave utility uses adaptive time stepping 
+and saves the .cas and .dat file at regularly specified intervals.
 ```
 
 Open a terminal and start ANSYS FLUENT.
