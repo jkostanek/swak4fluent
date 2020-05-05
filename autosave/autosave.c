@@ -1,3 +1,7 @@
+/* swak4fluent - autosave utility */
+/* This utility implements adaptive time-stepping.  The .cas and .dat files are saved in user-specified time intervals. */
+/* The time-stepping parameters and autosave intervals are controlled using RP variables. */
+
 #include "udf.h"
 
 DEFINE_DELTAT(autosave,d)
