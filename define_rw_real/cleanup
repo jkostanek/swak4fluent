@@ -1,0 +1,7 @@
+#!/bin/bash
+# Cleanup script
+
+rm box.cas
+rm box.dat
+rm log
+rm -r swak4fluent/

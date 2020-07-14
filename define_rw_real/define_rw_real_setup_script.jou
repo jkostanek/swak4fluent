@@ -1,0 +1,32 @@
+; Compile and load the define_rw function
+/define/user-defined/compiled-functions compile swak4fluent yes define_rw_real.c "" ""
+/define/user-defined/compiled-functions load swak4fluent
+
+; Read mesh
+/file/read-case box.msh
+
+; Hook the define_rw functions to Read Case and Read Data
+/def/user/function-hooks/read-data "reader::swak4fluent" ""
+/def/user/function-hooks/write-data "writer::swak4fluent" ""
+
+; Initialize the domain
+/solve/initialize/initialize-flow
+
+; Initialize global variable (kount)
+/def/user/exe "initialize::swak4fluent"
+
+; Increment value of global variable (kount) three times
+/def/user/exe "increment::swak4fluent"
+/def/user/exe "increment::swak4fluent"
+/def/user/exe "increment::swak4fluent"
+
+; Write case and data
+/file/write-case-data "box.cas"
+
+; Increment value of global variable (kount) three more times
+/def/user/exe "increment::swak4fluent"
+/def/user/exe "increment::swak4fluent"
+/def/user/exe "increment::swak4fluent"
+
+; Read the previously saved case and data... the value of kount should remain at 3
+/file/read-case-data "box.cas" y
