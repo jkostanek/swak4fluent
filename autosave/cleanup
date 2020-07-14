@@ -1,5 +1,5 @@
 #!/bin/bash
-# My first script
+# Cleanup script
 
 rm box_t=*
 rm log
