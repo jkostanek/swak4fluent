@@ -1,4 +1,4 @@
-The autosave utility is based on the user-defined, adjustable time step macro in ANSYS FLUENT.  
+The autosave utility is based on the DEFINE_DELTAT macro in ANSYS FLUENT.  
 
 The time step is adjusted based on the change of field variables of interest (temperature in this case).
 
