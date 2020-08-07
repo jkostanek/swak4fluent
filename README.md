@@ -17,7 +17,7 @@ Open a terminal and start ANSYS FLUENT.
 From within the FLUENT GUI, read the startup script journal file.
 
 ```
-<utility-name>_startup_script.jou
+run.jou
 ```
 
 Start the simulation.
