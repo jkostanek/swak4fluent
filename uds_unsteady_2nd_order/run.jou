@@ -1,0 +1,40 @@
+; BEGIN USER INPUT SECTION
+; Define RP variables for adjustable time stepping parameters
+(rp-var-define 'dt_min 1e-4 'real #f)
+(rp-var-define 'dt_max 1e3 'real #f)
+(rp-var-define 'f_min 0.95 'real #f)
+(rp-var-define 'f_max 1.05 'real #f)
+(rp-var-define 'tol 0.01 'real #f)
+
+; END USER INPUT SECTION
+
+; Compile and load the UDF
+/define/user-defined/compiled-functions compile swak4fluent yes uds_unsteady_2nd_order.c "" ""
+/define/user-defined/compiled-functions load swak4fluent
+
+; Read mesh
+/file/read-case box.msh
+
+; Set to transient
+/def/models unsteady-2nd-order? yes
+
+; Define a UDS and hook the UDF
+/def/user/user-defined-scalar 1 no no yes "none" "uds_unsteady_second_order::swak4fluent"
+
+; Turn off flow equation
+/solve/set/equations flow no
+
+; Define boundary condition at face x1
+/def/boundary/wall x1 no yes no 1
+
+; Initialize the domain
+/solve/initialize/initialize-flow ok
+
+(rpsetvar 'physical-time-step 0.01)
+
+/solve/monitors/residual/check no
+
+; Set adaptive time stepping and hook the autosave UDF
+/solve/set/transient/udf-based-time-stepping yes "adaptive_time_step::swak4fluent"
+
+/solve/dual-time-iterate 100 20
